@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MeanplanService {
+public class MealplanService {
     @Autowired
     private MealplanRepository mealPlanRepository;
 
@@ -21,9 +21,9 @@ public class MeanplanService {
         mealPlan.setTitle(request.getTitle());
         mealPlan.setDescription(request.getDescription());
         mealPlan.setDietType(request.getDietType());
-        mealPlan.setRecipes(request.getRecipes());
-        mealPlan.setNutritionalInfo(request.getNutritionalInfo());
-        mealPlan.setPortionSizes(request.getPortionSizes());
+//        mealPlan.setRecipes(request.getRecipes());
+//        mealPlan.setNutritionalInfo(request.getNutritionalInfo());
+//        mealPlan.setPortionSizes(request.getPortionSizes());
 
         mealPlan = mealPlanRepository.save(mealPlan);
 
