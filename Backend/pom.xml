@@ -30,6 +30,7 @@
         <module>Analytics-service</module>
         <module>Media-service</module>
         <module>Discovery-server</module>
+        <module>Api-gateway</module>
     </modules>
 
     <properties>
