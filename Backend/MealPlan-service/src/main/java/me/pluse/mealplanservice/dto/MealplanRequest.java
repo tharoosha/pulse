@@ -9,7 +9,7 @@ public class MealplanRequest {
     private String title;
     private String description;
     private String dietType;
-    private List<String> recipes;
-    private List<String> nutritionalInfo;
-    private List<String> portionSizes;
+    private String recipes;
+    private String nutritionalInfo;
+    private String portionSizes;
 }

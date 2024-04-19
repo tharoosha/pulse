@@ -11,17 +11,19 @@ public class MealplanResponse {
     private String title;
     private String description;
     private String dietType;
-    private List<String> recipes;
-    private List<String> nutritionalInfo;
-    private List<String> portionSizes;
+    private String imageId;
+    private String recipes;
+    private String nutritionalInfo;
+    private String portionSizes;
 
     public MealplanResponse(Mealplan mealPlan) {
         this.id = mealPlan.getId();
         this.title = mealPlan.getTitle();
         this.description = mealPlan.getDescription();
         this.dietType = mealPlan.getDietType();
-//        this.recipes = mealPlan.getRecipes();
-//        this.nutritionalInfo = mealPlan.getNutritionalInfo();
-//        this.portionSizes = mealPlan.getPortionSizes();
+        this.imageId = mealPlan.getImageId();
+        this.recipes = mealPlan.getRecipes();
+        this.nutritionalInfo = mealPlan.getNutritionalInfo();
+        this.portionSizes = mealPlan.getPortionSizes();
     }
 }

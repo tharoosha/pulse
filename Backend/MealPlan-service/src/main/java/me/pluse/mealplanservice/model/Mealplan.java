@@ -21,16 +21,15 @@ public class Mealplan {
     private String title;
     private String description;
     private String dietType; // e.g., Vegan, Keto, etc.
-    private String imageUrl; // URL to image stored via media-service
+    private String imageId; // URL to image stored via media-service
+
+
+    private String recipes; // URLs or descriptions of recipes
 
 //    @ElementCollection
-//    private List<String> recipes; // URLs or descriptions of recipes
-//
-//    @ElementCollection
-//    private List<String> nutritionalInfo;
-//
-//    @ElementCollection
-//    private List<String> portionSizes;
+    private String nutritionalInfo;
+
+    private String portionSizes;
 
     // Standard getters and setters
 }
