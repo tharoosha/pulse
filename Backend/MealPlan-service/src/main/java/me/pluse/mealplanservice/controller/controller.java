@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/mealplan")
+@CrossOrigin(origins = "http://localhost:3000/", methods = {RequestMethod.DELETE, RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @AllArgsConstructor
 public class controller {
     @Autowired
