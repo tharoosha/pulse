@@ -11,7 +11,9 @@ import me.pluse.mealplanservice.repository.MealplanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -32,6 +34,7 @@ public class MealplanService {
 
     public MealplanResponse createMealPlan(MultipartFile file, String mealPlanJson) throws IOException {
         MealplanRequest request = new ObjectMapper().readValue(mealPlanJson, MealplanRequest.class);
+
         Mealplan mealPlan = new Mealplan();
 
         mealPlan.setTitle(request.getTitle());
@@ -75,5 +78,42 @@ public class MealplanService {
         return mealPlanRepository.findAll().stream()
                 .map(MealplanResponse::new)
                 .collect(Collectors.toList());
+    }
+
+    public MealplanResponse getMealPlans(Long id) {
+        Mealplan mealPlan = mealPlanRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Meal plan not found with id: " + id));
+        return new MealplanResponse(mealPlan);
+    }
+
+    public MealplanResponse updateMealPlan(Long id, MultipartFile file, String mealPlanJson) throws IOException {
+        Mealplan existingMealPlan = mealPlanRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Meal plan not found with id: " + id));
+
+        MealplanRequest request = new ObjectMapper().readValue(mealPlanJson, MealplanRequest.class);
+
+        if (request.getTitle() != null) existingMealPlan.setTitle(request.getTitle());
+        if (request.getDescription() != null) existingMealPlan.setDescription(request.getDescription());
+        if (request.getDietType() != null) existingMealPlan.setDietType(request.getDietType());
+        if (request.getRecipes() != null) existingMealPlan.setRecipes(request.getRecipes());
+        if (request.getNutritionalInfo() != null) existingMealPlan.setNutritionalInfo(request.getNutritionalInfo());
+        if (request.getPortionSizes() != null) existingMealPlan.setPortionSizes(request.getPortionSizes());
+
+        if (file != null && !file.isEmpty()) {
+            MediaResponse mediaResponse = uploadFileToMediaService(file);
+            if (mediaResponse != null && mediaResponse.getId() != null && !mediaResponse.getId().isEmpty()) {
+                existingMealPlan.setImageId(mediaResponse.getId());
+            }
+        }
+
+        mealPlanRepository.save(existingMealPlan);
+        return new MealplanResponse(existingMealPlan);
+    }
+
+    public void deleteMealPlan(Long id) {
+        if (!mealPlanRepository.existsById(id)) {
+            throw new IllegalStateException("Meal plan not found with id: " + id);
+        }
+        mealPlanRepository.deleteById(id);
     }
 }

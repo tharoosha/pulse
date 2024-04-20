@@ -5,6 +5,7 @@ import me.pluse.mealplanservice.dto.MealplanRequest;
 import me.pluse.mealplanservice.dto.MealplanResponse;
 import me.pluse.mealplanservice.service.MealplanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,4 +32,40 @@ public class controller {
         List<MealplanResponse> responses = mealPlanService.getAllMealPlans();
         return ResponseEntity.ok(responses);
     }
+
+    @GetMapping("/getallmealplans/{id}")
+    public ResponseEntity<MealplanResponse> getMealPlans(@PathVariable Long id) {
+        try {
+            MealplanResponse mealPlanResponse = mealPlanService.getMealPlans(id);
+            return ResponseEntity.ok(mealPlanResponse);
+        } catch (IllegalStateException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<MealplanResponse> updateMealPlan(@PathVariable Long id,
+                                                           @RequestParam(value = "file",required = false) MultipartFile file,
+                                                           @RequestParam("mealPlanJson") String mealPlanJson) {
+        try {
+            MealplanResponse updatedMealPlan = mealPlanService.updateMealPlan(id, file, mealPlanJson);
+            return ResponseEntity.ok(updatedMealPlan);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        } catch (IllegalStateException | IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteMealPlan(@PathVariable Long id) {
+        try {
+            mealPlanService.deleteMealPlan(id);
+            return ResponseEntity.ok().build();
+        } catch (IllegalStateException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 }

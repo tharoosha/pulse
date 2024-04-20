@@ -36,4 +36,27 @@ public class MediaService {
     public Media getFile(String id) {
         return mediaRepository.findById(id).orElseThrow(() -> new RuntimeException("File not found with id " + id));
     }
+
+
+    public MediaResponse updateMedia(String id, MultipartFile file) throws IOException{
+        if (file.isEmpty()){
+            throw new IOException("Failed to upload empty file");
+        }
+
+        Media existingMedia = mediaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("File not found with id " + id));
+
+        existingMedia.setData(file.getBytes());
+        mediaRepository.save(existingMedia);
+
+        return new MediaResponse(existingMedia);
+    }
+
+
+    public void deleteMedia(String id) {
+        if (!mediaRepository.existsById(id)) {
+            throw new IllegalStateException("Media not found with id: " + id);
+        }
+        mediaRepository.deleteById(id);
+    }
 }
