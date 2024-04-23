@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { navigationMenu } from './NavigationMenu'
 import {useNavigate} from 'react-router-dom'
-import logo from '/Users/vihidun/MyFolder/Development/pulse/frontend/src/image2vector.svg'
+import logo from "../../image2vector.svg"
+// import logo from '/Users/vihidun/MyFolder/Development/pulse/frontend/src/image2vector.svg'
 import { Avatar, Button } from '@mui/material';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import Menu from '@mui/material/Menu';
