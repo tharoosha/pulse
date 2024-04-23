@@ -21,7 +21,7 @@ function Navigation() {
         console.log('logout')
         handleClose()
     }
-  return (
+  return (   
 
     <div className='h-screen sticky top-0'>
         <div>

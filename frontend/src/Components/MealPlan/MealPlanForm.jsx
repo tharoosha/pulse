@@ -28,13 +28,15 @@ const MealPlanForm = ({ onSuccess }) => {
         return;
       }
     const formData = new FormData();  // Use FormData to handle file data in POST request
-    formData.append('mealPlanJson', JSON.stringify(mealPlan));
+    console.log(mealPlan);
     formData.append('file', file);
+    formData.append('mealPlanJson', JSON.stringify(mealPlan));
     // addMealPlan(formData);
 
-    console.log(formData);
+    
 
     try {
+        console.log(formData.getAll("file"));
         // You might need to adjust the URL based on your server configuration
         const response = await axios.post('/api/mealplan/createmealplan', formData, {
           headers: {

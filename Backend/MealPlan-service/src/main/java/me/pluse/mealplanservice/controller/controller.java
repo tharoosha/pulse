@@ -16,11 +16,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/mealplan")
-@CrossOrigin(origins = "http://localhost:3000/", methods = {RequestMethod.DELETE, RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
+//@CrossOrigin(origins = "http://localhost:3000/", methods = {RequestMethod.DELETE, RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 @AllArgsConstructor
 public class controller {
     @Autowired
     private final MealplanService mealPlanService;
+
 
     @PostMapping("/createmealplan")
     public ResponseEntity<MealplanResponse> createMealPlan(@RequestPart("file")MultipartFile file, @RequestPart("mealPlanJson") String mealPlanJson) throws IOException {
