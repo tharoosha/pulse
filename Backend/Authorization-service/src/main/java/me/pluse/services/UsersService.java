@@ -1,4 +1,4 @@
-package me.pluse.service;
+package me.pluse.services;
 
 import jakarta.transaction.Transactional;
 import me.pluse.model.Users;

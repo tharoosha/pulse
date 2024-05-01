@@ -63,6 +63,9 @@ public class Users {
     @Field(name = "isAccountLocked")
     private boolean isAccountLocked;
 
+    @Field(name = "isReadOnlyUser")
+    private boolean isReadOnlyUser;
+
     @Field(name = "Bio")
     private String Bio;
 

@@ -1,6 +1,5 @@
-package me.pluse.service;
+package me.pluse.services;
 
-import jakarta.persistence.SequenceGenerator;
 import me.pluse.model.SeqGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;

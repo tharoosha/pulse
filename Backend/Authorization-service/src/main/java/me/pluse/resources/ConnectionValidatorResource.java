@@ -1,2 +1,4 @@
-package me.pluse.resources;public class ConnectionValidatorResource {
+package me.pluse.resources;
+
+public class ConnectionValidatorResource {
 }

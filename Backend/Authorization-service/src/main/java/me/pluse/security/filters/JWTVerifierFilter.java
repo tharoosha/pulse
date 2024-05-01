@@ -1,4 +1,4 @@
-package me.pluse.services.filters;
+package me.pluse.security.filters;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -15,7 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class JWTVerifierFilter extends OncePerRequestFilter {
 
-//    private final TokensRedisService tokensRedisService;
+    private final TokensRedisService tokensRedisService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {

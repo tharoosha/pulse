@@ -1,4 +1,4 @@
-package me.pluse.services.filters;
+package me.pluse.security.filters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.pluse.model.JwtAuthenticationModel;
+import me.pluse.services.redis.TokensRedisService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,15 +26,24 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private final AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager = new AuthenticationManager() {
+        @Override
+        public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+            return null;
+        }
+    };
     private ObjectMapper mapper=new ObjectMapper();
 
-//    private final TokensRedisService tokensRedisService;
+    private final TokensRedisService tokensRedisService;
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
             JwtAuthenticationModel authModel = mapper.readValue(request.getInputStream(), JwtAuthenticationModel.class);
+            // it is passing the UsernamePasswordAuthenticationToken to the default AuthenticationProvider, which will use the userDetailsService to get the user based on username and compare
+            // that user's password with the one in the authentication token. In general, the AuthenticationManager passes some sort of AuthenticationToken to the each of it's AuthenticationProviders
+            // and they each inspect it and, if they can use it to authenticate, they return with an indication of "Authenticated", "Unauthenticated", or "Could not authenticate" (which indicates
+            // the provider did not know how to handle the token, so it passed on processing it)
             Authentication authentication = new UsernamePasswordAuthenticationToken(authModel.getUsername(), authModel.getPassword());
             return authenticationManager.authenticate(authentication);
 

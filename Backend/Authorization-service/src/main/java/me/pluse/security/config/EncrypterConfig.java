@@ -1,4 +1,4 @@
-package me.pluse.services.config;
+package me.pluse.security.config;
 
 import me.pluse.utils.AppConstants;
 import org.springframework.context.annotation.Bean;
