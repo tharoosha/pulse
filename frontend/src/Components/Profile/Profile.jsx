@@ -15,14 +15,14 @@ import ProfileModal from "./ProfileModal";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const [openProfileModel, setOpenProfileModel] = useState(false)
-    const handleOpenProfileModel = () => setOpenProfileModel(true);
+  const [openProfileModel, setOpenProfileModel] = useState(false);
+  const handleOpenProfileModel = () => setOpenProfileModel(true);
   const handleClose = () => setOpenProfileModel(false);
 
   const handleBack = () => navigate(-1);
-//   const handleOpenProfileModel = () => {
-//     console.log("open profile model");
-//   };
+  //   const handleOpenProfileModel = () => {
+  //     console.log("open profile model");
+  //   };
 
   const handleFollowUser = () => {
     console.log("follow user");
@@ -40,7 +40,9 @@ const Profile = () => {
   };
   return (
     <div>
-      <section className={"bg-white z-50 flex items-center sticky top-0 bg-opacity-95"}>
+      <section
+        className={"bg-white z-50 flex items-center sticky top-0 bg-opacity-95"}
+      >
         <KeyboardBackspace className="cursor-pointer" onClick={handleBack} />
         <h1 className="py-5 text-xl font-bold opacity-90 ml-5">
           bhakthi randheer
@@ -161,7 +163,9 @@ const Profile = () => {
               </TabList>
             </Box>
             <TabPanel value="1">
-                {[1,1,1,1].map((item) => <TweetCard />)}
+              {[1, 1, 1, 1].map((item) => (
+                <TweetCard />
+              ))}
             </TabPanel>
             <TabPanel value="2">users replies</TabPanel>
             <TabPanel value="3">media</TabPanel>
@@ -171,7 +175,7 @@ const Profile = () => {
       </section>
 
       <section>
-        <ProfileModal handleClose={handleClose} open={openProfileModel}/>
+        <ProfileModal handleClose={handleClose} open={openProfileModel} />
       </section>
     </div>
   );

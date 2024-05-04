@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { defaultLocale } from "yup";
 import RepeatIcon from "@mui/icons-material/Repeat";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
@@ -6,13 +6,24 @@ import { useNavigate } from "react-router-dom";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 // import Menu from '@mui/material/Menu';
 // import MenuItem from '@mui/material/MenuItem';
-import image from "../../Assets/gym.jpeg"
-import { ChatBubbleOutline, FileUpload, BarChart, Favorite, FavoriteOutlined } from "@mui/icons-material";
+import image from "../../Assets/gym.jpeg";
+import {
+  ChatBubbleOutline,
+  FileUpload,
+  BarChart,
+  Favorite,
+  FavoriteOutlined,
+} from "@mui/icons-material";
+import ReplyModel from "./ReplyModel";
 
 const TweetCard = () => {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [openReplyModel, setOpenReplyModel] = useState(false)
+    const handleOpenReplyModel = () => setOpenReplyModel(true);
+  const handleCloseReplyModel = () => setOpenReplyModel(false);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -25,19 +36,17 @@ const TweetCard = () => {
     handleClose();
   };
 
-  const handleOpenReplyModel = () =>{
-    console.log("open model")
-  }
 
-  const handleCreateRetweet = () =>{
-    console.log("retweet")
-  }
 
-  const handleLiketweet = () =>{
+  const handleCreateRetweet = () => {
+    console.log("retweet");
+  };
+
+  const handleLiketweet = () => {
     console.log("handle like tweet");
-  }
+  };
   return (
-    <div className="" >
+    <React.Fragment>
       {/* <div className='flex items-center font-semibold text-grey-700 py-2'>
             <RepeatIcon />
             <p>You Retweet</p>
@@ -64,13 +73,13 @@ const TweetCard = () => {
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
                 sx={{
-                    // width: "100%",
-                    // borderRadius: "20px",
-                    // paddingY: "8px",
-                    // paddingX: "20px",
-                    // bgcolor: "#da7e3c",
-                    color: "#FF8645",
-                  }}
+                  // width: "100%",
+                  // borderRadius: "20px",
+                  // paddingY: "8px",
+                  // paddingX: "20px",
+                  // bgcolor: "#da7e3c",
+                  color: "#FF8645",
+                }}
               >
                 {/* Dashboard */}
                 <MoreHorizIcon />
@@ -93,40 +102,78 @@ const TweetCard = () => {
           </div>
 
           <div className="mt-2">
-            <div className="cursor-pointer" onClick={()=>navigate(`/twit/${3}`)}>
-                <p className="mb-2 p-0">"The real workout starts when you want to stop."</p>
-                <img className='w-[28rem] border border-gray-400 rounded-md' src={image} alt="" />
+            <div
+              className="cursor-pointer"
+              onClick={() => navigate(`/twit/${3}`)}
+            >
+              <p className="mb-2 p-0">
+                "The real workout starts when you want to stop."
+              </p>
+              <img
+                className="w-[28rem] border border-gray-400 rounded-md"
+                src={image}
+                alt=""
+              />
             </div>
             <div className="py-5 flex flex-wrap justify-between items-center">
-                <div className="space-x-3 flex items center text-grey-600">
-                <ChatBubbleOutline className="cursor-pointer" onClick={handleOpenReplyModel}/>
+              <div className="space-x-3 flex items center text-grey-600">
+                <ChatBubbleOutline
+                  className="cursor-pointer"
+                  onClick={handleOpenReplyModel}
+                />
                 <p>43</p>
-                </div>
-                <div className={`${true? "text-pink-600":"text-grey-600"} space-x-3 flex items-center`}>
-                    <RepeatIcon  
+              </div>
+              <div
+                className={`${
+                  true ? "text-pink-600" : "text-grey-600"
+                } space-x-3 flex items-center`}
+              >
+                <RepeatIcon
+                  onClick={handleCreateRetweet}
+                  className="cursor-pointer"
+                />
+                <p>54</p>
+              </div>
+              <div
+                className={`${
+                  true ? "text-pink-600" : "text-grey-600"
+                } space-x-3 flex items-center`}
+              >
+                {true ? (
+                  <Favorite
                     onClick={handleCreateRetweet}
-                    className="cursor-pointer"/>
-                    <p>54</p>
-                </div>
-                <div className={`${true? "text-pink-600":"text-grey-600"} space-x-3 flex items-center`}>
-                    {true? <Favorite  
-                    onClick={handleCreateRetweet}
-                    className="cursor-pointer"/>: <FavoriteOutlined onClick={handleLiketweet} className="cursor-pointer"/>}
-                    <p>549</p>
-                </div>
-                <div className="space-x-3 flex items center text-grey-600">
-                <BarChart className="cursor-pointer" onClick={handleOpenReplyModel}/>
+                    className="cursor-pointer"
+                  />
+                ) : (
+                  <FavoriteOutlined
+                    onClick={handleLiketweet}
+                    className="cursor-pointer"
+                  />
+                )}
+                <p>549</p>
+              </div>
+              <div className="space-x-3 flex items center text-grey-600">
+                <BarChart
+                  className="cursor-pointer"
+                  onClick={handleOpenReplyModel}
+                />
                 <p>4540</p>
-                </div>
-                <div className="space-x-3 flex items center text-grey-600">
-                <FileUpload className="cursor-pointer" onClick={handleOpenReplyModel}/>
-                </div>
-
+              </div>
+              <div className="space-x-3 flex items center text-grey-600">
+                <FileUpload
+                  className="cursor-pointer"
+                  onClick={handleOpenReplyModel}
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <section>
+        <ReplyModel open={openReplyModel} handleClose={handleCloseReplyModel}/>
+      </section>
+    </React.Fragment>
   );
 };
 
