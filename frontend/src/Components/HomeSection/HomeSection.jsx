@@ -44,7 +44,7 @@ const HomeSection = () => {
       </section>
       <section className={"pb-10"}>
         <div className="flex space-x-5">
-          <Avatar alt="username" src="" />
+          <Avatar alt="username" src="https://media.licdn.com/dms/image/D4E03AQH4kyaBK_DLkQ/profile-displayphoto-shrink_800_800/0/1689189799493?e=2147483647&v=beta&t=W3Hv0h-g3lFU0VU1IZSW7_2JBn91dyb1z-EGuvCqrhI" />
           <div className="w-full">
             <form onSubmit={formik.handleSubmit}>
               <div>

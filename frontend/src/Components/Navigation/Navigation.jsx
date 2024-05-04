@@ -66,10 +66,10 @@ function Navigation() {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <Avatar alt="username" src="" />
+          <Avatar alt="username" src="https://media.licdn.com/dms/image/D4E03AQH4kyaBK_DLkQ/profile-displayphoto-shrink_800_800/0/1689189799493?e=2147483647&v=beta&t=W3Hv0h-g3lFU0VU1IZSW7_2JBn91dyb1z-EGuvCqrhI" />
           <div>
-            <span>Code with Vihi</span>
-            <span className="opacity-70">@codewithvihi</span>
+            <span>Oh_itz Bhakthi</span>
+            <span className="opacity-70">@randheer</span>
           </div>
 
           <Button

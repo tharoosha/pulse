@@ -37,7 +37,7 @@ const TweetCard = () => {
     console.log("handle like tweet");
   }
   return (
-    <div className="">
+    <div className="" >
       {/* <div className='flex items-center font-semibold text-grey-700 py-2'>
             <RepeatIcon />
             <p>You Retweet</p>
@@ -46,9 +46,9 @@ const TweetCard = () => {
       <div className="flex space-x-5">
         <Avatar
           onClick={() => navigate(`/profile/${6}`)}
-          className="cursor=pointer"
+          className="cursor-pointer"
           alt="username"
-          src=""
+          src="https://media.licdn.com/dms/image/D4E03AQH4kyaBK_DLkQ/profile-displayphoto-shrink_800_800/0/1689189799493?e=2147483647&v=beta&t=W3Hv0h-g3lFU0VU1IZSW7_2JBn91dyb1z-EGuvCqrhI"
         />
         <div className="w-full">
           <div className="flex justify-between items-center">
@@ -93,7 +93,7 @@ const TweetCard = () => {
           </div>
 
           <div className="mt-2">
-            <div className="cursor-pointer">
+            <div className="cursor-pointer" onClick={()=>navigate(`/twit/${3}`)}>
                 <p className="mb-2 p-0">"The real workout starts when you want to stop."</p>
                 <img className='w-[28rem] border border-gray-400 rounded-md' src={image} alt="" />
             </div>
