@@ -5,12 +5,12 @@ import React from "react";
 const RightPart = () => {
   return (
     <div className="py-5 sticky top">
-      <div className="relative flex items-center">
+      <div className="relative flex items-center border-solid border-2 rounded-3xl focus-within:border-amber-600">
         <input
           type="text"
-          className="py-3 rounded-full text-grey-500 w-full pl-12"
+          className="py-3 rounded-full text-grey-500 w-full pl-12 focus:outline-none focus:border-amber-600"
         />
-        <div className="absolute top-0 left-0 pl-3 pt-3">
+        <div className="absolute top-0 left-0 pl-3 pt-3 ">
           <Search className="text-grey-500" />
         </div>
       </div>
@@ -45,8 +45,8 @@ const RightPart = () => {
         {[1, 1, 1].map((item) => (
           <div className="flex justify-between w-full">
             <div>
-              <p>Entertainment - Trending</p>
-              <p className="font-bold">#TheMervels</p>
+              <p>Personal Fitness - Trending</p>
+              <p className="font-bold">#PersonalFitness</p>
               <p>34.3k Tweets</p>
             </div>
             <MoreHoriz />

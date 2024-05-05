@@ -53,11 +53,15 @@ function Navigation() {
               py: "15px",
               bgcolor: "#da7e3c",
               color: "white",
+              border: "solid #da7e3c",
               "&:hover": {
-                bgcolor: "#FB6514",
+                bgcolor: "white",
+                color: "#da7e3c",
+                border: " solid #da7e3c",
               },
             }}
-            variant="contained"
+            // variant="contained"
+            type="submit"
           >
             Hit
           </Button>
@@ -66,10 +70,13 @@ function Navigation() {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <Avatar alt="username" src="https://media.licdn.com/dms/image/D4E03AQH4kyaBK_DLkQ/profile-displayphoto-shrink_800_800/0/1689189799493?e=2147483647&v=beta&t=W3Hv0h-g3lFU0VU1IZSW7_2JBn91dyb1z-EGuvCqrhI" />
+          <Avatar
+            alt="username"
+            src="https://scontent.fcmb11-1.fna.fbcdn.net/v/t39.30808-6/218416521_1976539102511297_7685615858323385982_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFhnGToPZB0M0_THZb8gpu_h-RF-pWFaOKH5EX6lYVo4vZvVgIzjStm-RrGmn9JYAG8WTLsJg7Z-8DSkFE2wraj&_nc_ohc=yIqooFDgj-YQ7kNvgFhjqLH&_nc_zt=23&_nc_ht=scontent.fcmb11-1.fna&oh=00_AfCtHPKrYZOeaQbLFZgA2nplN3h91uh1dnghSJj9jRB4ag&oe=663C9CD7"
+          />
           <div>
-            <span>Oh_itz Bhakthi</span>
-            <span className="opacity-70">@randheer</span>
+            <span>Oh_itz Dulanjaya</span>
+            <span className="opacity-70">@dulanjaya</span>
           </div>
 
           <Button

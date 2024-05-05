@@ -45,7 +45,7 @@ const Profile = () => {
       >
         <KeyboardBackspace className="cursor-pointer" onClick={handleBack} />
         <h1 className="py-5 text-xl font-bold opacity-90 ml-5">
-          bhakthi randheer
+        Dulanjaya Premarathna
         </h1>
       </section>
       <section>
@@ -59,8 +59,8 @@ const Profile = () => {
         <div className="flex justify-between items-start mt-5 h-[5rem]">
           <Avatar
             className="transform -translate-y-20"
-            alt="bhakthi randheer"
-            src="https://media.licdn.com/dms/image/D4E03AQH4kyaBK_DLkQ/profile-displayphoto-shrink_800_800/0/1689189799493?e=2147483647&v=beta&t=W3Hv0h-g3lFU0VU1IZSW7_2JBn91dyb1z-EGuvCqrhI"
+            alt="Dulanjaya Premarathna"
+            src="https://scontent.fcmb11-1.fna.fbcdn.net/v/t39.30808-6/218416521_1976539102511297_7685615858323385982_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFhnGToPZB0M0_THZb8gpu_h-RF-pWFaOKH5EX6lYVo4vZvVgIzjStm-RrGmn9JYAG8WTLsJg7Z-8DSkFE2wraj&_nc_ohc=yIqooFDgj-YQ7kNvgFhjqLH&_nc_zt=23&_nc_ht=scontent.fcmb11-1.fna&oh=00_AfCtHPKrYZOeaQbLFZgA2nplN3h91uh1dnghSJj9jRB4ag&oe=663C9CD7"
             sx={{
               width: "8rem",
               height: "8rem",
@@ -97,9 +97,9 @@ const Profile = () => {
         </div>
         <div>
           <div className="flex items-center">
-            <h1 className="font-bold text-lg">bhakthi randheer</h1>
+            <h1 className="font-bold text-lg">Dulanjaya Premarathna</h1>
           </div>
-          <h1 className="text-gray-500">@bhakthirandheer</h1>
+          <h1 className="text-gray-500">@dulanjaya</h1>
         </div>
         <div className="mt-2 space-y-3">
           <p>
